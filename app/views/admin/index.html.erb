@@ -1,0 +1,100 @@
+<center><h1>Административная панель управления сайта</h1></center>
+
+<div class="container">
+<div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+  <center>
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Добавить страну</button>
+      <hr>
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling1" aria-controls="offcanvasScrolling1">Добавить категорию</button>
+      <hr>
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Добавить страну</button>
+  </center>
+
+
+
+
+
+
+</div>
+
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Добавить страну</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 365px;">
+        <%= form_for :country, url: countries_path do |f| %>
+          <center>
+            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 320px;">
+              <b>Страны/Countries</b>
+              <hr>
+              <% @countries.each do |country| %>
+                <p><%= country.name_ru %>/<%= country.name_en %></p>
+              <% end %>
+            </div>
+          </center>
+
+            <%= f.text_field :name_ru, class:'form-control', placeholder:'Новая страна на русском' %>
+            <hr>
+
+
+            <%= f.text_field :name_en, class:'form-control', placeholder:'Новая страна на английском' %>
+            <hr>
+            <%= f.button 'Добавить', class:'btn btn-success' %>
+
+        <% end %>
+    </div>
+  </div>
+</div>
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling1" aria-labelledby="offcanvasScrollingLabel1">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Добавить страну</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 365px;">
+        <%= form_for :category, url: categories_path do |f| %>
+          <center>
+            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 320px;">
+              <b>Категории/Categories</b>
+              <hr>
+              <% @categories.each do |category| %>
+                <p><%= category.title_ru %>/<%= category.title_en %></p>
+              <% end %>
+            </div>
+          </center>
+
+            <%= f.text_field :title_ru, class:'form-control', placeholder:'Новая категория на русском' %>
+            <hr>
+
+
+            <%= f.text_field :title_en, class:'form-control', placeholder:'Новая категория на английском' %>
+            <hr>
+            <%= f.button 'Добавить', class:'btn btn-success' %>
+
+        <% end %>
+    </div>
+  </div>
+</div>
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <br>
+  <div class="container">
+
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasTopLabel">Добавить страну</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+      </div>
+      <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <div class="offcanvas-body">
+        <b>Страны/Countries</b>
+      <hr>
+        ...
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
