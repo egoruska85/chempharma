@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :countries, only: :create
   resources :categories, only: :create
+  resources :manufacturers, only: :create
   # Defines the root path route ("/")
   # root "articles#index"
 end
