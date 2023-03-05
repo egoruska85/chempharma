@@ -3,15 +3,29 @@
   <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <div class="row">
       <div class="col col-lg-6 col-sm-12">
-        <h1><b><%= @product.title_ru.upcase %></b></h1>
+        <h1>
+          <b>
+            <%= @product.title_ru.upcase if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
+            <%= @product.title_ru.upcase if params[:locale] == 'ru' %>
+            <%= @product.title_en.upcase if params[:locale] == 'en' %>
+          </b>
+
+
+        </h1>
         <hr>
-        <%= @product.desc_ru %>
+        <%= @product.desc_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
+        <%= @product.desc_ru if params[:locale] == 'ru' %>
+        <%= @product.desc_en if params[:locale] == 'en' %>
         <hr>
-        <%= @product.country.name_ru %>
+        <%= @product.country.name_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
+        <%= @product.country.name_ru if params[:locale] == 'ru' %>
+        <%= @product.country.name_en if params[:locale] == 'en' %>
         <br>
         <%= @product.manufacturer.name %>
         <br>
-        <%= @product.category.title_ru %>
+        <%= @product.category.title_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
+        <%= @product.category.title_ru if params[:locale] == 'ru' %>
+        <%= @product.category.title_en if params[:locale] == 'en' %>
         <hr>
         <%= @product.price %>
       </div>
@@ -19,6 +33,9 @@
         <%= image_tag(@product.image, class:"img-thumbnail") %>
       </div>
     </div>
-
+    <!--<% @product.images.each do |image| %>
+      <%= image_tag(image, class:"img-thumbnail")%>
+    <% end %>-->
   </div>
+
 </div>
