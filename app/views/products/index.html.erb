@@ -1,5 +1,34 @@
-<% @products.each do |product| %>
-  <%= product.title_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
-  <%= product.title_ru if params[:locale] == 'ru' %>
-  <%= product.title_en if params[:locale] == 'tm' %>
-<% end %>
+<center>
+  <h1>
+    <%= 'Продукция' if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
+    <%= 'Продукция' if params[:locale] == 'ru' %>
+    <%= 'Production' if params[:locale] == 'en' %>
+  </h1>
+</center>
+<div class="container">
+  <center>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col col-lg-4">
+        <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 333px;">
+
+            <%= link_to product_path(product), class:'nav-link' do %>
+              <%= image_tag(product.image, :width => 300, :height => 180)%>
+              <hr>
+                <%= product.title_ru.upcase if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
+                <%= product.title_ru.upcase if params[:locale] == 'ru' %>
+                <%= product.title_en.upcase if params[:locale] == 'en' %>
+            <% end %>
+
+        </div>
+      </div>
+
+
+
+    <% end %>
+  </div>
+
+
+
+</center>
+</div>

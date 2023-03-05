@@ -3,11 +3,73 @@
 <div class="container">
 <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
   <center>
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Добавить страну</button>
+    <%= form_for :product, url: products_path do |f| %>
+      <%= f.label 'Наименование на русском' %>
+
+      <%= f.text_field :title_ru, class:'form-control', style:'width: 400px;'%>
+      <br>
+      <%= f.label 'Наименование на английском' %>
+      <%= f.text_field :title_en, class:'form-control', style:'width: 400px;'%>
       <hr>
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling1" aria-controls="offcanvasScrolling1">Добавить категорию</button>
+      <br>
+      <%= f.label 'Описание на русском' %>
+
+      <%= f.text_field :desc_ru, class:'form-control', style:'width: 400px;'%>
+      <br>
+      <%= f.label 'Описание на английском' %>
+      <%= f.text_field :desc_en, class:'form-control', style:'width: 400px;'%>
       <hr>
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Добавить Производителя</button>
+      <br>
+      <div class="row">
+        <div class="col">
+          <%= f.select :country_id, options_for_select(@countries.collect{ |country| [country.name_ru, country.id] }), {}, {class: "form-control", style:"width: 300px"} %>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Добавить страну</button>
+        </div>
+      </div>
+
+
+
+      <hr>
+      <div class="row">
+        <div class="col">
+          <%= f.select :category_id, options_for_select(@categories.collect{ |cat| [cat.title_ru, cat.id] }), {}, {class: "form-control", style:"width: 300px"} %>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling1" aria-controls="offcanvasScrolling1">Добавить категорию</button>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col">
+          <%= f.select :manufacturer_id, options_for_select(@manufacturers.collect{ |cat| [cat.name, cat.id] }), {}, {class: "form-control", style:"width: 300px"} %>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Добавить Производителя</button>
+        </div>
+      </div>
+      <hr>
+      <%= f.label 'Цена' %>
+      <%= f.number_field :price, class:'form-control', style:'width: 400px;', placeholder:'$'%>
+      <hr>
+      <div class="mb-6 row" style="width:800px;">
+        <div class="col">
+          <label for="formFile" class="form-label">Главное изображение</label>
+          <%= f.file_field :image, class:'form-control', type:"file", id:"formFile" %>
+        </div>
+        <div class="col">
+          <label for="formFile" class="form-label">Доболнительные изображения</label>
+          <%= f.file_field :images, multiple: true, class:'form-control' %>
+        </div>
+      </div>
+
+      <hr>
+      <%= f.submit 'Добавить', class:'btn btn-success' %>
+    <% end %>
+
+
   </center>
 
 
