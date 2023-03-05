@@ -1,2 +1,5 @@
 <% @products.each do |product| %>
+  <%= product.title_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'ru' %>
+  <%= product.title_ru if params[:locale] == 'ru' %>
+  <%= product.title_en if params[:locale] == 'tm' %>
 <% end %>
